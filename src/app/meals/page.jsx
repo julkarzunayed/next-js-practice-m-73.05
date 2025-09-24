@@ -1,10 +1,11 @@
 
 import React from 'react'
 import MealSearchInput from './components/MealSearchInput';
+import Image from 'next/image';
 
 export const metadata = {
-  title: "All Meals",
-  description: "Meals Loaded from all mealDB.",
+    title: "All Meals",
+    description: "Meals Loaded from all mealDB.",
 };
 
 
@@ -46,8 +47,14 @@ export default async function MealsPage({ searchParams }) {
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 container mx-auto p-5">
                 {meals?.map(meal =>
                     <div key={meal?.idMeal} className="p-2">
-                        <img src={meal?.strMealThumb} alt="" />
-                        {meal?.strMeal}
+                        <Image
+                            src={meal?.strMealThumb}
+                            alt={meal?.strMeal}
+                            width={641}
+                            height={641} />
+                        <h4 className="font-bold text-xl">
+                            {meal?.strMeal}
+                        </h4>
                     </div>
                 )}
             </div>

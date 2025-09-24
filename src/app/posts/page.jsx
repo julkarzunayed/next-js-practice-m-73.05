@@ -1,11 +1,15 @@
 import Link from 'next/link';
 import React from 'react'
-
+import { Roboto } from "next/font/google";
 export const metadata = {
   title: "All Posts",
   description: "Loading Post data in server component.",
 };
 
+const roboto = Roboto({
+  weight: ['400', '600', '700'],
+  subsets: ["latin"],
+});
 
 export const getPosts = async () => {
     const res = await fetch('https://jsonplaceholder.typicode.com/posts');
@@ -18,8 +22,8 @@ export default async function Posts() {
     const posts = await getPosts();
 
     return (
-        <div>
-            <div className="grid grid-cols-3 gap-4 p-4">
+        <div >
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-4">
                 {posts?.map(post =>
                     <div
                         key={post?.id}
@@ -27,7 +31,7 @@ export default async function Posts() {
                         <h3 className="text-2xl font-bold">
                             {post?.title}
                         </h3>
-                        <p className="">
+                        <p className={`${roboto?.className}`}>
                             {post?.body}
                         </p>
 
