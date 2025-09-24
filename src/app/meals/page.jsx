@@ -2,6 +2,12 @@
 import React from 'react'
 import MealSearchInput from './components/MealSearchInput';
 
+export const metadata = {
+  title: "All Meals",
+  description: "Meals Loaded from all mealDB.",
+};
+
+
 export default async function MealsPage({ searchParams }) {
 
     const { search } = await searchParams;
