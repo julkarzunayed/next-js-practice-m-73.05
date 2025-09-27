@@ -21,7 +21,7 @@ export default function Location() {
         setCurrentLocation(address)
     }
 
-    console.log(error)
+    // console.log(error)
 
     return (
         <div className='mt-10'>

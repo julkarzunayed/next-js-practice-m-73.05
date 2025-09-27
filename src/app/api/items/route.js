@@ -1,20 +1,26 @@
 // export const dynamic = 'force-static'
 
+import dbConnect from "@/app/lib/dbConnect";
+
+const collection = {
+    posts: 'posts',
+
+}
+// get API of Posts
 export async function GET() {
 
-    const data = {
-        message: "Successfully get request.",
-        error: false,
-        status: 200,
-    }
+    const data = await dbConnect(collection.posts).find({}).toArray();
 
-    return Response.json({ data })
+    return Response.json(data);
 };
 
+
+// post API of Posts
 export async function POST(req) {
 
-    const postedData = await req.json();
+    const post = await req.json();
+    const data = await dbConnect(collection.posts).insertOne(post);
 
-    return Response.json({ postedData })
+    return Response.json(data)
 };
 
