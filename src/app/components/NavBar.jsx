@@ -9,6 +9,8 @@ export default async function NavBar() {
             <ul className="flex-1 flex gap-10 justify-center">
                 <Link href={`/`}><li>Home</li></Link>
                 <Link href={`/meals`}><li>Meals</li></Link>
+                <Link href={`/products`}><li>Products</li></Link>
+                <Link href={`/products/add`}><li>Add Products</li></Link>
                 <Link href={`/posts`}><li>Post</li></Link>
             </ul>
         </div>

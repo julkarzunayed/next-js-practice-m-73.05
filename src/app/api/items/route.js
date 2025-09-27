@@ -1,15 +1,16 @@
 // export const dynamic = 'force-static'
 
 import dbConnect from "@/app/lib/dbConnect";
+import { revalidatePath } from "next/cache";
 
 const collection = {
-    posts: 'posts',
+    products: 'products',
 
 }
 // get API of Posts
 export async function GET() {
 
-    const data = await dbConnect(collection.posts).find({}).toArray();
+    const data = await dbConnect(collection.products).find({}).toArray();
 
     return Response.json(data);
 };
@@ -19,8 +20,8 @@ export async function GET() {
 export async function POST(req) {
 
     const post = await req.json();
-    const data = await dbConnect(collection.posts).insertOne(post);
-
+    const data = await dbConnect(collection.products).insertOne(post);
+    revalidatePath("/products")
     return Response.json(data)
 };
 

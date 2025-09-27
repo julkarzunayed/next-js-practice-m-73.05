@@ -6,7 +6,7 @@ export async function GET(req, { params }) {
 
     const p = await params;
     // console.log(p.id);
-    const post = await dbConnect("posts")
+    const post = await dbConnect("products")
         .findOne(
             { _id: new ObjectId(p.id) }
         );
@@ -20,7 +20,7 @@ export async function GET(req, { params }) {
 export async function DELETE(req, { params }) {
 
     const p = await params;
-    const res = await dbConnect("posts")
+    const res = await dbConnect("products")
         .deleteOne(
             { _id: new ObjectId(p.id) }
         );
@@ -34,7 +34,7 @@ export async function PATCH(req, { params }) {
     const p = await params;
     const updateData = await req.json();
 
-    const updateReq = await dbConnect("posts")
+    const updateReq = await dbConnect("products")
         .updateOne(
             { _id: new ObjectId(p.id) },
             {
